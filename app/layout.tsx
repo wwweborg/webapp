@@ -1,41 +1,86 @@
 /* eslint-disable @next/next/no-page-custom-font */
-import type {Metadata} from 'next';
+import type {Metadata, Viewport} from 'next';
 import './globals.css'; // Global styles
+import {
+  GITHUB_ORG_URL,
+  GITHUB_URL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from '@/lib/site';
 
-const siteDescription =
-  'Aplicación de notas Markdown minimalista con sincronización en GitHub, IA multimodelo y cifrado de extremo a extremo. Parte del ecosistema wwwOS.';
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: SITE_NAME,
+  applicationCategory: 'ProductivityApplication',
+  applicationSubCategory: 'Note-taking',
+  operatingSystem: 'Web',
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  codeRepository: GITHUB_URL,
+  downloadUrl: GITHUB_URL,
+  license: 'https://opensource.org/licenses/MIT',
+  isAccessibleForFree: true,
+  inLanguage: ['es', 'en', 'pt', 'fr', 'nl', 'it', 'de', 'ja', 'zh', 'ru'],
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  author: {
+    '@type': 'Organization',
+    name: 'wwweborg',
+    url: GITHUB_ORG_URL,
+  },
+  sameAs: [GITHUB_URL, GITHUB_ORG_URL],
+};
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://webapp.microtecn.xyz'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Webapp — wwwOS',
-    template: '%s · Webapp',
+    default: SITE_TITLE,
+    template: `%s · ${SITE_NAME}`,
   },
-  description: siteDescription,
-  applicationName: 'Webapp',
-  authors: [{ name: 'wwweborg', url: 'https://github.com/wwweborg' }],
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{name: 'wwweborg', url: GITHUB_ORG_URL}],
   creator: 'wwweborg',
   publisher: 'wwweborg',
   category: 'productivity',
   keywords: [
     'notas',
     'markdown',
+    'app de notas',
+    'notas markdown',
     'GitHub',
+    'sincronización',
     'IA',
     'inteligencia artificial',
     'privacidad',
     'cifrado',
+    'E2EE',
+    'código abierto',
+    'open source',
+    'markdown notes',
+    'note-taking app',
+    'self-hosted',
     'wwwOS',
-    'app de notas',
     'macOS',
   ],
   alternates: {
     canonical: '/',
+    languages: {
+      es: '/',
+      en: '/',
+      'x-default': '/',
+    },
   },
   icons: {
     icon: [
-      { url: '/icon.svg', type: 'image/svg+xml' },
-      { url: '/favicon.svg', type: 'image/svg+xml' },
+      {url: '/icon.svg', type: 'image/svg+xml'},
+      {url: '/favicon.svg', type: 'image/svg+xml'},
     ],
     shortcut: '/icon.svg',
     apple: '/icon.svg',
@@ -43,20 +88,48 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
+    alternateLocale: ['en_US'],
     url: '/',
-    siteName: 'Webapp',
-    title: 'Webapp — wwwOS',
-    description: siteDescription,
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   twitter: {
-    card: 'summary',
-    title: 'Webapp — wwwOS',
-    description: siteDescription,
+    card: 'summary_large_image',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: 'default',
+  },
+  formatDetection: {
+    telephone: false,
+    email: false,
+    address: false,
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    {media: '(prefers-color-scheme: light)', color: '#F8FAFC'},
+    {media: '(prefers-color-scheme: dark)', color: '#0B1220'},
+  ],
+  colorScheme: 'light dark',
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
@@ -69,6 +142,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet" />
         <link href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap" rel="stylesheet" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{__html: JSON.stringify(structuredData)}}
+        />
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>

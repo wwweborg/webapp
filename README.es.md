@@ -20,6 +20,9 @@
   <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" />
   <img alt="TypeScript 5.9" src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white" />
   <a href="./CONTRIBUTING.md"><img alt="PRs bienvenidos" src="https://img.shields.io/badge/PRs-bienvenidos-brightgreen?style=flat-square" /></a>
+  <a href="https://github.com/wwweborg/webapp/stargazers"><img alt="Estrellas en GitHub" src="https://img.shields.io/github/stars/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
+  <a href="https://github.com/wwweborg/webapp/discussions"><img alt="Discussions en GitHub" src="https://img.shields.io/github/discussions/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
+  <a href="https://github.com/wwweborg/webapp/issues"><img alt="Issues en GitHub" src="https://img.shields.io/github/issues/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
 </p>
 
 <p align="center">
@@ -45,6 +48,7 @@
 - [Estructura del proyecto](#estructura-del-proyecto)
 - [Versionado](#versionado)
 - [Hoja de ruta](#hoja-de-ruta)
+- [Comunidad](#comunidad)
 - [Contribuir](#contribuir)
 - [Recursos de terceros](#recursos-de-terceros)
 - [Licencia](#licencia)
@@ -341,6 +345,20 @@ Webapp es la primera aplicación del ecosistema **wwwOS**. El trabajo previsto i
 - [ ] Publicar notas de versión y un changelog público.
 
 ¿Tienes una idea? Abre un issue o inicia una discusión.
+
+---
+
+## Comunidad
+
+- **Preguntas, ideas y configuraciones** → [GitHub Discussions](https://github.com/wwweborg/webapp/discussions).
+  Es el mejor lugar para "¿cómo hago…?", lluvia de ideas y mostrar cómo usas Webapp.
+- **Errores** → [abre un issue](https://github.com/wwweborg/webapp/issues/new/choose).
+  Las plantillas piden los datos necesarios para reproducirlo.
+- **Problemas de seguridad** → lee primero [SECURITY.md](./SECURITY.md). Nunca abras un issue público.
+- **Convivencia** → este proyecto sigue el [Contributor Covenant](./CODE_OF_CONDUCT.md).
+
+Si Webapp te resulta útil, una ⭐ en el repositorio es la forma más barata de
+ayudar a que otras personas lo encuentren.
 
 ---
 

@@ -20,6 +20,9 @@
   <img alt="React 19" src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=white" />
   <img alt="TypeScript 5.9" src="https://img.shields.io/badge/TypeScript-5.9-3178C6?style=flat-square&logo=typescript&logoColor=white" />
   <a href="./CONTRIBUTING.md"><img alt="PRs welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen?style=flat-square" /></a>
+  <a href="https://github.com/wwweborg/webapp/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
+  <a href="https://github.com/wwweborg/webapp/discussions"><img alt="GitHub Discussions" src="https://img.shields.io/github/discussions/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
+  <a href="https://github.com/wwweborg/webapp/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/wwweborg/webapp?style=flat-square&color=006FFF" /></a>
 </p>
 
 <p align="center">
@@ -45,6 +48,7 @@
 - [Project structure](#project-structure)
 - [Versioning](#versioning)
 - [Roadmap](#roadmap)
+- [Community](#community)
 - [Contributing](#contributing)
 - [Third-party assets](#third-party-assets)
 - [License](#license)
@@ -341,6 +345,20 @@ Webapp is the first app in the **wwwOS** ecosystem. Planned work includes:
 - [ ] Publish release notes and a public changelog.
 
 Have an idea? Open an issue or start a discussion.
+
+---
+
+## Community
+
+- **Questions, ideas and setups** → [GitHub Discussions](https://github.com/wwweborg/webapp/discussions).
+  Best place for "how do I…", feature brainstorming and showing how you use Webapp.
+- **Bugs** → [open an issue](https://github.com/wwweborg/webapp/issues/new/choose).
+  The templates ask for the details needed to reproduce it.
+- **Security problems** → read [SECURITY.md](./SECURITY.md) first. Never open a public issue.
+- **Behaviour** → this project follows the [Contributor Covenant](./CODE_OF_CONDUCT.md).
+
+If Webapp is useful to you, a ⭐ on the repository is the cheapest way to help
+other people find it.
 
 ---
 

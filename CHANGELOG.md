@@ -26,6 +26,8 @@ First public release of Webapp, the notes application of the **wwwOS** ecosystem
 - Open-source documentation: English and Spanish README, contributing guide, security policy and MIT license.
 - GitHub Actions workflow that runs lint, typecheck and build on every push and pull request.
 - Third-party license notices for the bundled Toss Face emoji font, which is redistributed under its own license and is not covered by MIT.
+- SEO baseline for the deployed app: `robots.txt`, `sitemap.xml`, web app manifest, Open Graph image, Twitter cards and `SoftwareApplication` structured data.
+- Community infrastructure: issue forms, pull request template, Contributor Covenant code of conduct and a publishing checklist in `docs/PUBLISHING.md`.
 
 ### Fixed
 

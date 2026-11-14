@@ -1,0 +1,85 @@
+name: Bug report
+description: Something is broken or does not behave as expected
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. A good report is the fastest way to get it fixed.
+
+        If your question is not a bug, please use [Discussions](https://github.com/wwweborg/webapp/discussions) instead.
+        For security issues, **do not open a public issue**: see [SECURITY.md](https://github.com/wwweborg/webapp/blob/main/SECURITY.md).
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched the existing issues and this is not a duplicate.
+          required: true
+        - label: I removed tokens, API keys, private repository names and personal note content from everything below.
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug in one or two sentences.
+      placeholder: When I open a note with tables, the editor freezes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The smallest sequence of steps that triggers the problem.
+      placeholder: |
+        1. Create a note with a table
+        2. Switch to Markdown mode
+        3. Click on the last row
+        4. The page freezes
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      placeholder: The editor should keep working and let me edit the table.
+
+  - type: input
+    id: version
+    attributes:
+      label: Webapp version
+      description: Shown in Settings, bottom of the panel. `0.1.2026-1411` is the first release.
+      placeholder: 0.1.2026-1411
+    validations:
+      required: true
+
+  - type: dropdown
+    id: deployment
+    attributes:
+      label: How are you running Webapp?
+      options:
+        - Official deployment (webapp.microtecn.xyz)
+        - Self-hosted on Vercel
+        - Self-hosted somewhere else
+        - Local development server
+        - Not sure
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and operating system
+      placeholder: Firefox 132 on macOS Sequoia
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs, console output or screenshots
+      description: Paste errors from the browser console or the server terminal. Screenshots help a lot.
+      render: shell

@@ -1,0 +1,65 @@
+name: Feature request
+description: Suggest an idea, an improvement or a new integration
+title: '[Feature]: '
+labels: ['enhancement']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping shape Webapp. Before opening a request, please check the
+        [roadmap](https://github.com/wwweborg/webapp#roadmap) and the
+        [existing discussions](https://github.com/wwweborg/webapp/discussions) to see
+        whether it is already planned.
+
+        For open-ended ideas, a Discussion is usually a better place than an issue.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Describe the situation you are in, not only the solution you imagine.
+      placeholder: I keep the same note open on two devices and sometimes lose the last edit.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to happen?
+      placeholder: Show a warning when the open note changed on GitHub since it was loaded.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you have considered
+      placeholder: Manual reloading, or using a different app for that workflow.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Editor
+        - Storage and GitHub sync
+        - AI assistant
+        - Encryption and security
+        - Tasks and calendar
+        - Appearance and customization
+        - Accessibility
+        - Performance
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before submitting
+      options:
+        - label: I searched existing issues and discussions and this is not a duplicate.
+          required: true
+        - label: I understand that Webapp is maintained by volunteers and that requests are not a commitment to implement them.
+          required: true

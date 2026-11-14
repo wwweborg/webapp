@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions, ideas and show your setup
+    url: https://github.com/wwweborg/webapp/discussions
+    about: Ask for help, share how you use Webapp or discuss a feature before it becomes an issue.
+  - name: Documentation
+    url: https://wadocs.vercel.app
+    about: Guides, installation and configuration.
+  - name: Security vulnerability
+    url: https://github.com/wwweborg/webapp/security/advisories/new
+    about: Report vulnerabilities privately. Never open a public issue for a security problem.

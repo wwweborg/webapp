@@ -6,7 +6,7 @@ Thanks for taking the time to contribute. Webapp is an open-source project and e
 
 ## Code of conduct
 
-Be kind, constructive and respectful. We welcome people of all backgrounds and experience levels. Harassment, personal attacks and discriminatory language are not acceptable.
+This project follows the [Contributor Covenant](./CODE_OF_CONDUCT.md). Be kind, constructive and respectful. We welcome people of all backgrounds and experience levels. Harassment, personal attacks and discriminatory language are not acceptable.
 
 ## Ways to contribute
 

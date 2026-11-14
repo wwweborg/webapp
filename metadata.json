@@ -1,0 +1,8 @@
+{
+  "name": "webapp",
+  "description": "Aplicación minimalista y elegante de notas Markdown con sincronización en GitHub, IA multimodelo y cifrado de extremo a extremo. Parte del ecosistema wwwOS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

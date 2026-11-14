@@ -1,0 +1,877 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.css');
+
+@font-face {
+  font-family: 'Tossface';
+  src: url('/fonts/TossFaceFontMac.ttf') format('truetype'),
+       url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+1F000-1FAFF, U+2600-27BF, U+2300-23FF, U+2B50, U+2B55, U+203C, U+2049, U+00A9, U+00AE, U+2122, U+25AA-25FE, U+FE00-FE0F;
+}
+
+@font-face {
+  font-family: 'Toss Face';
+  src: url('/fonts/TossFaceFontMac.ttf') format('truetype'),
+       url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.woff2') format('woff2');
+  font-display: swap;
+  unicode-range: U+1F000-1FAFF, U+2600-27BF, U+2300-23FF, U+2B50, U+2B55, U+203C, U+2049, U+00A9, U+00AE, U+2122, U+25AA-25FE, U+FE00-FE0F;
+}
+
+/* Toss Face Emoji font utility classes */
+.font-emoji-tossface,
+[data-emoji-pack="tossface"] .font-emoji,
+[data-emoji-pack="tossface"] [data-emoji="true"] {
+  font-family: "Tossface", "Toss Face", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif !important;
+}
+
+.font-emoji-system,
+[data-emoji-pack="system"] .font-emoji,
+[data-emoji-pack="system"] [data-emoji="true"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Android Emoji", sans-serif !important;
+}
+
+[data-emoji-pack="tossface"] .bear-editor-content,
+[data-emoji-pack="tossface"] .bear-editor-content * {
+  font-family: inherit;
+}
+
+:root {
+  --primary-color: #006FFF;
+  --app-font-sans: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --app-font-mono: "Roboto Mono", "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --canvas-bg: #EEF1F6;
+  --surface-card: #FFFFFF;
+  color-scheme: light;
+}
+
+html.dark, :root.dark {
+  --canvas-bg: #0F0F0F;
+  --surface-card: #181818;
+  color-scheme: dark;
+}
+
+@theme {
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+}
+
+/* =========================================================
+   TASKFLOW SQUIRCLE & LAYERED SOFT SHADOW UTILITIES
+   ========================================================= */
+.taskflow-squircle-sm {
+  border-radius: 14px;
+  corner-shape: squircle;
+}
+
+.taskflow-squircle-md {
+  border-radius: 20px;
+  corner-shape: squircle;
+}
+
+.taskflow-squircle-lg {
+  border-radius: 28px;
+  corner-shape: squircle;
+}
+
+.taskflow-squircle-xl {
+  border-radius: 36px;
+  corner-shape: squircle;
+}
+
+/* Multi-layered soft ambient shadows (disabled for clean flat look) */
+.shadow-taskflow-card,
+.shadow-taskflow-card:hover,
+.hover\:shadow-taskflow-card-hover:hover,
+.shadow-taskflow-floating,
+.shadow-taskflow-modal,
+.shadow-taskflow-pill,
+.dark .shadow-taskflow-card,
+.dark .shadow-taskflow-card:hover,
+.dark .hover\:shadow-taskflow-card-hover:hover,
+.dark .shadow-taskflow-floating,
+.dark .shadow-taskflow-modal {
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   SCROLLBAR ADAPTATION (Light & Dark Mode)
+   ========================================================= */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+html.dark *,
+.dark * {
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+/* Chrome, Edge, Safari WebKit Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.14);
+  border-radius: 9999px;
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.28);
+}
+
+.dark ::-webkit-scrollbar-thumb,
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.18);
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+/* =========================================================
+   DIVIDERS & HORIZONTAL RULES (Soft, non-intrusive)
+   ========================================================= */
+hr, .bear-hr {
+  border: none !important;
+  border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+  margin: 1.75rem 0 !important;
+  height: 1px !important;
+  opacity: 0.9;
+}
+
+.dark hr, .dark .bear-hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Bear & Notion Markdown Editor Typography Styles */
+.bear-editor-content {
+  font-family: var(--app-font-sans);
+  font-size: var(--note-font-size, 1.0625rem); /* 17px */
+  line-height: 1.75;
+  letter-spacing: -0.011em;
+  padding-bottom: 12rem;
+  color: var(--note-paragraph-color-light, #0F172A);
+}
+
+.dark .bear-editor-content {
+  color: var(--note-paragraph-color-dark, #F4F4F5);
+}
+
+.bear-editor-content p {
+  margin-bottom: 0.85rem;
+  color: var(--note-paragraph-color-light, #0F172A);
+}
+
+.dark .bear-editor-content p {
+  color: var(--note-paragraph-color-dark, #F4F4F5);
+}
+
+.bear-editor-content h1 {
+  font-size: 2.125rem; /* 34px */
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
+  color: var(--note-heading-color-light, #09090B);
+}
+
+.dark .bear-editor-content h1 {
+  color: var(--note-heading-color-dark, #FAFAFA);
+}
+
+.bear-editor-content h2 {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--note-heading-color-light, #09090B);
+}
+
+.dark .bear-editor-content h2 {
+  color: var(--note-heading-color-dark, #FAFAFA);
+}
+
+.bear-editor-content h3 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 650;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
+  color: var(--note-heading-color-light, #09090B);
+}
+
+.dark .bear-editor-content h3 {
+  color: var(--note-heading-color-dark, #FAFAFA);
+}
+
+.bear-editor-content h4,
+.bear-editor-content h5,
+.bear-editor-content h6 {
+  color: var(--note-heading-color-light, #09090B);
+}
+
+.dark .bear-editor-content h4,
+.dark .bear-editor-content h5,
+.dark .bear-editor-content h6 {
+  color: var(--note-heading-color-dark, #FAFAFA);
+}
+
+.bear-editor-content ul:not([data-type="taskList"]) {
+  list-style-type: disc;
+  padding-left: 1.6rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.bear-editor-content ol {
+  list-style-type: decimal;
+  padding-left: 1.6rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.bear-editor-content li {
+  margin-bottom: 0.25rem;
+}
+
+.bear-editor-content li p {
+  margin-bottom: 0.25rem;
+}
+
+/* Task list / Checklists */
+.bear-editor-content ul[data-type="taskList"] {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0.95rem 0;
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label {
+  margin-top: 0.18rem;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 8px;
+  corner-shape: squircle;
+  border: 2px solid #CBD5E1;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: rgba(241, 245, 249, 0.6);
+  flex-shrink: 0;
+}
+
+.dark .bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"] {
+  border-color: #3F3F46;
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"]:hover {
+  border-color: var(--primary-color, #006FFF);
+  transform: scale(1.08);
+  background-color: rgba(0, 111, 255, 0.08);
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"]:active {
+  transform: scale(0.94);
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"]:checked {
+  background-color: var(--primary-color, #006FFF);
+  border-color: var(--primary-color, #006FFF);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  background-size: 70% 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: taskCheckPop 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes taskCheckPop {
+  0% { transform: scale(0.8); }
+  60% { transform: scale(1.14); }
+  100% { transform: scale(1); }
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > label input[type="checkbox"]:checked:hover {
+  transform: scale(1.08);
+  filter: brightness(1.08);
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"][data-checked="true"] > div > p {
+  text-decoration: line-through;
+  opacity: 0.52;
+  transition: opacity 0.2s ease, text-decoration 0.2s ease;
+}
+
+.bear-editor-content ul[data-type="taskList"] li[data-type="taskItem"] > div {
+  flex: 1;
+}
+
+/* Inline code */
+.bear-editor-content code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.2rem 0.45rem;
+  border-radius: 0.375rem;
+  background-color: rgba(120, 120, 128, 0.14);
+  color: #0F172A;
+  font-weight: 600;
+}
+
+.dark .bear-editor-content code:not(pre code) {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--primary-color, #3894FF);
+  font-weight: 500;
+}
+
+/* Text Highlight (==texto resaltado==) & GitHub @Mentions (@usuario) using active Accent Color */
+.bear-editor-content mark,
+.bear-highlight,
+.prose mark,
+.bear-editor-content .bear-github-mention,
+.bear-github-mention {
+  background-color: rgba(0, 111, 255, 0.16);
+  background-color: color-mix(in srgb, var(--primary-color, #006FFF) 18%, transparent);
+  color: #0F172A;
+  color: color-mix(in srgb, var(--primary-color, #006FFF) 78%, #09090B);
+  padding: 0.12rem 0.38rem;
+  margin: 0 0.05rem;
+  border-radius: 0.375rem;
+  font-weight: 600;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  transition: background-color 0.2s ease, color 0.2s ease, filter 0.15s ease;
+}
+
+.dark .bear-editor-content mark,
+.dark .bear-highlight,
+.dark .prose mark,
+.dark .bear-editor-content .bear-github-mention,
+.dark .bear-github-mention {
+  background-color: rgba(0, 111, 255, 0.25);
+  background-color: color-mix(in srgb, var(--primary-color, #006FFF) 26%, transparent);
+  color: #F8FAFC;
+  color: color-mix(in srgb, var(--primary-color, #006FFF) 55%, #FFFFFF);
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+.bear-editor-content .bear-github-mention,
+.bear-github-mention {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  vertical-align: baseline;
+  line-height: 1.35;
+  padding: 0.1rem 0.42rem 0.1rem 0.24rem;
+}
+
+.bear-editor-content .bear-github-mention .bear-github-mention-avatar,
+.bear-github-mention .bear-github-mention-avatar {
+  width: 1.1rem !important;
+  height: 1.1rem !important;
+  min-width: 1.1rem !important;
+  min-height: 1.1rem !important;
+  border-radius: 9999px !important;
+  object-fit: cover !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  display: inline-block !important;
+  flex-shrink: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.bear-editor-content .bear-github-mention:hover,
+.bear-github-mention:hover {
+  background-color: color-mix(in srgb, var(--primary-color, #006FFF) 28%, transparent);
+  text-decoration: none !important;
+}
+
+.dark .bear-editor-content .bear-github-mention:hover,
+.dark .bear-github-mention:hover {
+  background-color: color-mix(in srgb, var(--primary-color, #006FFF) 38%, transparent);
+}
+
+/* Code blocks */
+.bear-editor-content pre,
+.bear-code-block {
+  font-family: var(--font-mono) !important;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-radius: 1rem !important;
+  border: none !important;
+  padding: 1.15rem 1.35rem !important;
+  margin: 1.25rem 0 !important;
+  background-color: #F1F5F9 !important;
+  color: #171717 !important;
+}
+
+.dark .bear-editor-content pre,
+.dark .bear-code-block {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #F3F4F6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+.bear-code-block code,
+.bear-editor-content pre code {
+  color: inherit !important;
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-family: inherit !important;
+}
+
+/* Blockquotes (Notas en Markdown) */
+.bear-editor-content blockquote {
+  border: none !important;
+  border-left: none !important;
+  padding: 1.1rem 1.35rem !important;
+  margin: 1.25rem 0 !important;
+  font-style: normal !important;
+  font-weight: 500;
+  border-radius: 1rem !important;
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.dark .bear-editor-content blockquote {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #F4F4F5 !important;
+}
+
+.bear-editor-content blockquote p {
+  color: inherit !important;
+  margin-bottom: 0.5rem;
+}
+
+.bear-editor-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* Markdown Tables (Rounded Outer Borders + Cell Grid Borders + Alignment) */
+.bear-editor-content table,
+.bear-markdown-table {
+  width: 100%;
+  margin: 1.65rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #CBD5E1;
+  background-color: #FFFFFF;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.dark .bear-editor-content table,
+.dark .bear-markdown-table {
+  border-color: #2E2E32;
+  background-color: #18181B;
+}
+
+.bear-editor-content th,
+.bear-editor-content td {
+  padding: 0.75rem 1rem;
+  border-right: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+  vertical-align: middle;
+  position: relative;
+  min-width: 90px;
+  box-sizing: border-box;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.dark .bear-editor-content th,
+.dark .bear-editor-content td {
+  border-right-color: #27272A;
+  border-bottom-color: #27272A;
+}
+
+.bear-editor-content th {
+  background-color: #F1F5F9;
+  color: #0F172A;
+  font-weight: 700;
+  border-bottom: 1px solid #CBD5E1;
+}
+
+.dark .bear-editor-content th {
+  background-color: #222226;
+  color: #F4F4F5;
+  border-bottom-color: #2E2E32;
+}
+
+.bear-editor-content td {
+  color: #1E293B;
+}
+
+.dark .bear-editor-content td {
+  color: #E4E4E7;
+}
+
+.bear-editor-content tr th:last-child,
+.bear-editor-content tr td:last-child {
+  border-right: none;
+}
+
+.bear-editor-content tbody tr:last-child td,
+.bear-editor-content tr:last-child td {
+  border-bottom: none;
+}
+
+.bear-editor-content tbody tr:not(:first-child):hover td {
+  background-color: rgba(241, 245, 249, 0.55);
+}
+
+.dark .bear-editor-content tbody tr:not(:first-child):hover td {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.bear-editor-content th p,
+.bear-editor-content td p {
+  margin: 0 !important;
+  line-height: 1.5;
+}
+
+.bear-editor-content th[data-align="left"],
+.bear-editor-content td[data-align="left"],
+.bear-editor-content th[data-align="left"] p,
+.bear-editor-content td[data-align="left"] p {
+  text-align: left !important;
+}
+
+.bear-editor-content th[data-align="center"],
+.bear-editor-content td[data-align="center"],
+.bear-editor-content th[data-align="center"] p,
+.bear-editor-content td[data-align="center"] p {
+  text-align: center !important;
+}
+
+.bear-editor-content th[data-align="right"],
+.bear-editor-content td[data-align="right"],
+.bear-editor-content th[data-align="right"] p,
+.bear-editor-content td[data-align="right"] p {
+  text-align: right !important;
+}
+
+.bear-editor-content th.selectedCell,
+.bear-editor-content td.selectedCell {
+  background-color: color-mix(in srgb, var(--primary-color, #006FFF) 14%, transparent) !important;
+}
+
+/* In-Document Search & Replace Match Highlights (Ctrl+F / Ctrl+H) */
+.bear-search-match {
+  background-color: rgba(250, 204, 21, 0.38);
+  color: inherit;
+  border-radius: 4px;
+  padding: 1px 0;
+  border: none !important;
+  box-shadow: none !important;
+  transition: background-color 0.12s ease;
+}
+
+.dark .bear-search-match {
+  background-color: rgba(250, 204, 21, 0.28);
+}
+
+.bear-search-match-active {
+  background-color: #F59E0B !important;
+  color: #0F172A !important;
+  font-weight: 600;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.dark .bear-search-match-active {
+  background-color: #FBBF24 !important;
+  color: #09090B !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Placeholder */
+.bear-editor-content p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  color: #A1A1AA;
+  pointer-events: none;
+  height: 0;
+}
+
+.dark .bear-editor-content p.is-editor-empty:first-child::before {
+  color: #52525B;
+}
+
+/* CodeMirror Legacy Support (if needed) */
+.dark .CodeMirror,
+.dark .CodeMirror-scroll,
+.dark .editor-preview {
+  background-color: #0F0F0F !important;
+  color: #F4F4F5 !important;
+  border-color: #27272A !important;
+}
+.dark .editor-toolbar {
+  background-color: #141414 !important;
+  border-color: #27272A !important;
+}
+.dark .editor-toolbar button {
+  color: #A1A1AA !important;
+}
+.dark .editor-toolbar button:hover, 
+.dark .editor-toolbar button.active {
+  background-color: #27272A !important;
+  color: #FAFAFA !important;
+}
+
+/* Prose Markdown Blockquotes & Code Blocks across app */
+.prose blockquote {
+  border: none !important;
+  border-left: none !important;
+  padding: 1rem 1.25rem !important;
+  margin: 1rem 0 !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  border-radius: 1rem !important;
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
+}
+
+.dark .prose blockquote {
+  background-color: rgba(255, 255, 255, 0.06) !important;
+  color: #F4F4F5 !important;
+}
+
+.prose pre {
+  border-radius: 1rem !important;
+  padding: 1rem 1.25rem !important;
+  background-color: #F1F5F9 !important;
+  color: #171717 !important;
+}
+
+.dark .prose pre {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #F3F4F6 !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* =========================================================
+   GUÍA DE RESALTADO DE SINTAXIS: COLORES Y ELEMENTOS
+   (TypeScript, JavaScript, HTML, CSS, PHP, Python, Bash, JSON, SQL, YAML, Rust, Go, Ruby, TPI/DOQ)
+   ========================================================= */
+
+/* Texto base / símbolos comunes: #171717 (Claro) | #F3F4F6 (Oscuro) */
+.bear-code-block,
+.bear-editor-content pre,
+.bear-editor-content pre code,
+.prose pre,
+.prose pre code,
+.hljs {
+  color: #171717 !important;
+}
+
+.dark .bear-code-block,
+.dark .bear-editor-content pre,
+.dark .bear-editor-content pre code,
+.dark .prose pre,
+.dark .prose pre code,
+.dark .hljs {
+  color: #F3F4F6 !important;
+}
+
+/* Símbolos comunes, variables, identificadores base y propiedades */
+.hljs-params,
+.hljs-variable,
+.hljs-variable.language_,
+.hljs-property,
+.hljs-attr {
+  color: #171717;
+}
+
+.dark .hljs-params,
+.dark .hljs-variable,
+.dark .hljs-variable.language_,
+.dark .hljs-property,
+.dark .hljs-attr {
+  color: #F3F4F6;
+}
+
+/* A. Palabras Clave del Lenguaje (Keywords)
+   Modo Claro: Azul #2563EB | Modo Oscuro: Azul #60A5FA */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-name,
+.hljs-meta .hljs-keyword {
+  color: #2563EB !important;
+  font-weight: 500;
+}
+
+.dark .hljs-keyword,
+.dark .hljs-selector-tag,
+.dark .hljs-subst,
+.dark .hljs-name,
+.dark .hljs-meta .hljs-keyword {
+  color: #60A5FA !important;
+}
+
+/* B. Cadenas de Texto (Strings)
+   Modo Claro: Verde #16A34A | Modo Oscuro: Verde #4ADE80 */
+.hljs-string,
+.hljs-regexp,
+.hljs-template-variable,
+.hljs-template-tag {
+  color: #16A34A !important;
+}
+
+.dark .hljs-string,
+.dark .hljs-regexp,
+.dark .hljs-template-variable,
+.dark .hljs-template-tag {
+  color: #4ADE80 !important;
+}
+
+/* C. Números y Valores Especiales (Literals / Booleans)
+   Modo Claro: Naranja #FC4503 | Modo Oscuro: Naranja #FC6F24 */
+.hljs-number,
+.hljs-literal {
+  color: #FC4503 !important;
+}
+
+.dark .hljs-number,
+.dark .hljs-literal {
+  color: #FC6F24 !important;
+}
+
+/* D. Funciones y Métodos
+   Modo Claro: Amarillo #F59E0B | Modo Oscuro: Amarillo #FBBF24 */
+.hljs-title.function_,
+.hljs-title.function__,
+.hljs-function,
+.hljs-title.hljs-title_function,
+.hljs-title.class_.inherited__ {
+  color: #F59E0B !important;
+}
+
+.dark .hljs-title.function_,
+.dark .hljs-title.function__,
+.dark .hljs-function,
+.dark .hljs-title.hljs-title_function,
+.dark .hljs-title.class_.inherited__ {
+  color: #FBBF24 !important;
+}
+
+/* E. Tipos de Datos y Operadores
+   Modo Claro: Rojo #EF4444 | Modo Oscuro: Rojo #F87171 */
+.hljs-type,
+.hljs-built_in,
+.hljs-operator,
+.hljs-symbol,
+.hljs-title.class_ {
+  color: #EF4444 !important;
+}
+
+.dark .hljs-type,
+.dark .hljs-built_in,
+.dark .hljs-operator,
+.dark .hljs-symbol,
+.dark .hljs-title.class_ {
+  color: #F87171 !important;
+}
+
+/* F. Comentarios
+   Modo Claro: Gris #6B7280 (cursiva) | Modo Oscuro: Gris #9CA3AF (cursiva) */
+.hljs-comment,
+.hljs-quote,
+.hljs-doctag {
+  color: #6B7280 !important;
+  font-style: italic !important;
+}
+
+.dark .hljs-comment,
+.dark .hljs-quote,
+.dark .hljs-doctag {
+  color: #9CA3AF !important;
+  font-style: italic !important;
+}
+
+/* =========================================================
+   10.A MODO ENFOQUE (FOCUS MODE / MÁQUINA DE ESCRIBIR)
+   Mantiene el párrafo/bloque activo iluminado mientras atenúa
+   el resto del texto y permite centrar la línea de escritura.
+   ========================================================= */
+.bear-editor-content.bear-focus-mode-enabled {
+  padding-top: 24vh !important;
+  padding-bottom: 46vh !important;
+  transition: padding 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bear-editor-content.bear-focus-mode-enabled > * {
+  opacity: 0.26;
+  filter: saturate(0.7);
+  transition: opacity 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+}
+
+.dark .bear-editor-content.bear-focus-mode-enabled > * {
+  opacity: 0.24;
+}
+
+.bear-editor-content.bear-focus-mode-enabled > *:not(.bear-focus-active-block):hover {
+  opacity: 0.52;
+}
+
+.bear-editor-content.bear-focus-mode-enabled > .bear-focus-active-block {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+
+
+
+
+

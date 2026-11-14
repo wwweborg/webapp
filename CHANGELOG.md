@@ -24,6 +24,8 @@ First public release of Webapp, the notes application of the **wwwOS** ecosystem
 - Customization: light/dark/system themes, accent color, Google Fonts, note typography colors, icon packs and emoji packs.
 - Keyboard shortcuts and a universal command palette.
 - Open-source documentation: English and Spanish README, contributing guide, security policy and MIT license.
+- GitHub Actions workflow that runs lint, typecheck and build on every push and pull request.
+- Third-party license notices for the bundled Toss Face emoji font, which is redistributed under its own license and is not covered by MIT.
 
 ### Fixed
 
@@ -32,6 +34,8 @@ First public release of Webapp, the notes application of the **wwwOS** ecosystem
 - Added missing translation keys for the note color settings and sidebar labels in all supported locales.
 - Removed type errors caused by redundant `view === 'settings'` checks in the sidebar.
 - Fixed React hooks lint errors around encryption and export callbacks.
+- Removed a non-existent jsDelivr fallback URL from the Toss Face `@font-face` declarations.
+- Replaced the invalid `next clean` npm script with a cross-platform Node command.
 
 ### Known limitations
 

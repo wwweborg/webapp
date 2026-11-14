@@ -27,7 +27,7 @@
 </p>
 
 > [!NOTE]
-> This is the first public release of Webapp (`0.1.2026-1411`). The core app is functional and builds successfully, but the documentation site, public demo and multi-user OAuth flow are still on the roadmap. Feedback and contributions are very welcome.
+> This is the first release of Webapp (`0.1.2026-1411`). The core app is functional and builds successfully, but the documentation site, public demo and multi-user OAuth flow are still on the roadmap. Feedback and contributions are very welcome.
 
 ---
 
@@ -46,6 +46,7 @@
 - [Versioning](#versioning)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
+- [Third-party assets](#third-party-assets)
 - [License](#license)
 
 ---
@@ -99,7 +100,7 @@ Webapp is the notes application of **wwwOS**, an open-source ecosystem being bui
 - Light, dark and system themes; custom accent color.
 - Google Fonts for UI and code; custom note typography colors and sizes.
 - Icon packs: **Meteor Icons**, **Lucide**, **Material Symbols** and **Heroicons**.
-- Emoji packs: system emojis or **Toss Face**.
+- Emoji packs: system emojis or **Toss Face** ([license](./THIRD-PARTY-NOTICES.md)).
 
 ---
 
@@ -322,7 +323,7 @@ The version string `0.1.2026-1411` is valid [Semantic Versioning 2.0.0](https://
 - `2026` = patch
 - `1411` = pre-release identifier
 
-The hyphen is allowed. One detail to keep in mind: SemVer treats `0.1.2026-1411` as a **pre-release of `0.1.2026`**, so a future `0.1.2026` without the suffix would be considered newer. If you ever want a date/build stamp that does not imply a pre-release, use build metadata instead, for example `0.1.2026+1411`. For now, the project uses the hyphenated form you requested.
+The hyphen is allowed. One detail to keep in mind: SemVer treats `0.1.2026-1411` as a **pre-release of `0.1.2026`**, so a future `0.1.2026` without the suffix would be considered newer. If you ever want a date/build stamp that does not imply a pre-release, use build metadata instead, for example `0.1.2026+1411`. For now, the project uses the hyphenated form.
 
 ---
 
@@ -335,7 +336,8 @@ Webapp is the first app in the **wwwOS** ecosystem. Planned work includes:
 - [ ] Improve onboarding for first-time self-hosters.
 - [ ] Add multi-user GitHub OAuth so each visitor can connect their own notes repository.
 - [ ] Expand the wwwOS design system and share it across future apps.
-- [ ] Add automated tests and a CI workflow.
+- [x] Add a CI workflow that runs lint, typecheck and build on every push.
+- [ ] Add automated tests.
 - [ ] Publish release notes and a public changelog.
 
 Have an idea? Open an issue or start a discussion.
@@ -348,10 +350,27 @@ Contributions of all sizes are welcome: bug reports, translations, documentation
 
 1. Read [CONTRIBUTING.md](./CONTRIBUTING.md).
 2. Fork the repository and create a branch.
-3. Make your change and run `bun run lint` and `bun run build`.
+3. Make your change and run `bun run lint`, `bun run typecheck` and `bun run build`.
 4. Open a pull request with a clear description.
 
 Please be kind and constructive. This project follows a simple rule: discuss ideas openly, review code respectfully.
+
+---
+
+## Third-party assets
+
+The MIT license covers Webapp's source code. One asset bundled in this
+repository has its own terms:
+
+- **Toss Face** emoji font (`public/fonts/TossFaceFontMac.ttf`) is
+  © 2022, 2023 Viva Republica (Toss), distributed under the
+  [Toss Face License](https://toss.im/tossface/copyright). It is **not** MIT
+  and **not** OFL. It is redistributed unmodified, together with its copyright
+  notice and full license text, as that license requires.
+
+See [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) for details and
+[`public/fonts/TossFace-LICENSE.txt`](./public/fonts/TossFace-LICENSE.txt) for
+the full text. If you fork this project, keep those files with the font.
 
 ---
 

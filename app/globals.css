@@ -4,16 +4,14 @@
 
 @font-face {
   font-family: 'Tossface';
-  src: url('/fonts/TossFaceFontMac.ttf') format('truetype'),
-       url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.woff2') format('woff2');
+  src: url('/fonts/TossFaceFontMac.ttf') format('truetype');
   font-display: swap;
   unicode-range: U+1F000-1FAFF, U+2600-27BF, U+2300-23FF, U+2B50, U+2B55, U+203C, U+2049, U+00A9, U+00AE, U+2122, U+25AA-25FE, U+FE00-FE0F;
 }
 
 @font-face {
   font-family: 'Toss Face';
-  src: url('/fonts/TossFaceFontMac.ttf') format('truetype'),
-       url('https://cdn.jsdelivr.net/gh/toss/tossface/dist/tossface.woff2') format('woff2');
+  src: url('/fonts/TossFaceFontMac.ttf') format('truetype');
   font-display: swap;
   unicode-range: U+1F000-1FAFF, U+2600-27BF, U+2300-23FF, U+2B50, U+2B55, U+203C, U+2049, U+00A9, U+00AE, U+2122, U+25AA-25FE, U+FE00-FE0F;
 }

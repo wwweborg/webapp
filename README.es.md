@@ -27,7 +27,7 @@
 </p>
 
 > [!NOTE]
-> Esta es la primera versión pública de Webapp (`0.1.2026-1411`). La aplicación principal es funcional y compila correctamente, pero el sitio de documentación, la demo pública y el flujo OAuth multiusuario siguen en la hoja de ruta. Los comentarios y las contribuciones son muy bienvenidos.
+> Esta es la primera versión de Webapp (`0.1.2026-1411`). La aplicación principal es funcional y compila correctamente, pero el sitio de documentación, la demo pública y el flujo OAuth multiusuario siguen en la hoja de ruta. Los comentarios y las contribuciones son muy bienvenidos.
 
 ---
 
@@ -46,6 +46,7 @@
 - [Versionado](#versionado)
 - [Hoja de ruta](#hoja-de-ruta)
 - [Contribuir](#contribuir)
+- [Recursos de terceros](#recursos-de-terceros)
 - [Licencia](#licencia)
 
 ---
@@ -99,7 +100,7 @@ Webapp es la aplicación de notas de **wwwOS**, un ecosistema de código abierto
 - Temas claro, oscuro y automático; color de acento personalizable.
 - Google Fonts para la interfaz y el código; colores y tamaños tipográficos de las notas personalizables.
 - Packs de iconos: **Meteor Icons**, **Lucide**, **Material Symbols** y **Heroicons**.
-- Packs de emojis: emojis del sistema o **Toss Face**.
+- Packs de emojis: emojis del sistema o **Toss Face** ([licencia](./THIRD-PARTY-NOTICES.md)).
 
 ---
 
@@ -322,7 +323,7 @@ La cadena `0.1.2026-1411` es válida según [Semantic Versioning 2.0.0](https://
 - `2026` = patch
 - `1411` = identificador de pre-release
 
-El guion está permitido. Un detalle a tener en cuenta: SemVer interpreta `0.1.2026-1411` como una **pre-release de `0.1.2026`**, así que un futuro `0.1.2026` sin sufijo se consideraría más nuevo. Si alguna vez quieres un sello de fecha/build que no implique pre-release, usa metadatos de build, por ejemplo `0.1.2026+1411`. Por ahora, el proyecto usa la forma con guion que pediste.
+El guion está permitido. Un detalle a tener en cuenta: SemVer interpreta `0.1.2026-1411` como una **pre-release de `0.1.2026`**, así que un futuro `0.1.2026` sin sufijo se consideraría más nuevo. Si alguna vez quieres un sello de fecha/build que no implique pre-release, usa metadatos de build, por ejemplo `0.1.2026+1411`. Por ahora, el proyecto usa la forma con guion.
 
 ---
 
@@ -335,7 +336,8 @@ Webapp es la primera aplicación del ecosistema **wwwOS**. El trabajo previsto i
 - [ ] Mejorar el onboarding para quienes se autoalojan por primera vez.
 - [ ] Añadir OAuth multiusuario de GitHub para que cada visitante conecte su propio repositorio de notas.
 - [ ] Ampliar el sistema de diseño wwwOS y compartirlo con futuras aplicaciones.
-- [ ] Añadir tests automatizados y un flujo de CI.
+- [x] Añadir un flujo de CI que ejecute lint, typecheck y build en cada push.
+- [ ] Añadir tests automatizados.
 - [ ] Publicar notas de versión y un changelog público.
 
 ¿Tienes una idea? Abre un issue o inicia una discusión.
@@ -348,10 +350,28 @@ Las contribuciones de cualquier tamaño son bienvenidas: reportes de errores, tr
 
 1. Lee [CONTRIBUTING.md](./CONTRIBUTING.md).
 2. Haz un fork del repositorio y crea una rama.
-3. Haz tu cambio y ejecuta `bun run lint` y `bun run build`.
+3. Haz tu cambio y ejecuta `bun run lint`, `bun run typecheck` y `bun run build`.
 4. Abre un pull request con una descripción clara.
 
 Por favor, sé amable y constructivo. Este proyecto sigue una regla simple: discute las ideas abiertamente y revisa el código con respeto.
+
+---
+
+## Recursos de terceros
+
+La licencia MIT cubre el código fuente de Webapp. Un recurso incluido en este
+repositorio tiene sus propios términos:
+
+- La fuente de emojis **Toss Face** (`public/fonts/TossFaceFontMac.ttf`) es
+  © 2022, 2023 Viva Republica (Toss) y se distribuye bajo la
+  [Toss Face License](https://toss.im/tossface/copyright). **No** es MIT ni
+  OFL. Se redistribuye sin modificaciones, junto con su aviso de copyright y el
+  texto completo de la licencia, tal como exige esa licencia.
+
+Consulta [THIRD-PARTY-NOTICES.md](./THIRD-PARTY-NOTICES.md) para más detalles y
+[`public/fonts/TossFace-LICENSE.txt`](./public/fonts/TossFace-LICENSE.txt) para
+el texto completo. Si haces un fork de este proyecto, conserva esos archivos
+junto a la fuente.
 
 ---
 

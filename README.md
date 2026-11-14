@@ -193,10 +193,16 @@ Copy `.env.example` to `.env.local` and fill in the values you need.
 | `GITHUB_TOKEN` | Yes | Personal Access Token with read/write access to the **notes** repository. A fine-grained token with `Contents: Read and write` is recommended. |
 | `GITHUB_USER` | Yes | Owner of the notes repository (user or organization). |
 | `GITHUB_REPO` | Yes | Name of the notes repository. |
-| `APP_URL` | No | Public URL of the deployment. Used for self-referential links and metadata. |
+| `APP_URL` | No | Public URL of the deployment. Used for canonical links and Open Graph metadata. |
+| `APP_PASSWORD` | No | Enables an HTTP Basic authentication gate on every route. **Strongly recommended** for any deployment with real notes. Requires HTTPS. |
+| `APP_USERNAME` | No | Username for the gate above. Defaults to `webapp`. |
+| `ALLOW_INDEXING` | No | Set to `true` only for a public demo with sample notes. A normal deployment stays out of search engines. |
 
 > [!IMPORTANT]
 > The token is used by the server, not by the browser. Never expose it with a `NEXT_PUBLIC_` prefix and never commit `.env.local`.
+
+> [!WARNING]
+> A deployment is **single-tenant**: every visitor shares the notes repository configured by `GITHUB_TOKEN`, and the `/api/notes` routes have no per-user login yet. Do not publish a deployment with personal notes unless you set `APP_PASSWORD`, and keep `ALLOW_INDEXING` unset so search engines never index a page that renders your notes. See [SECURITY.md](./SECURITY.md).
 
 ### AI providers (all optional)
 
@@ -273,9 +279,10 @@ You can change the model and base URL from **Settings → AI**.
 - **Master password.** The encryption key is derived from your master password and is not stored on the server. Losing the password means losing access to encrypted notes.
 - **Token scope.** Use a fine-grained GitHub token limited to the notes repository, not a classic token with full account access.
 - **Self-hosting.** You control the deployment and the environment variables.
+- **Private by default.** Search engine indexing is disabled unless `ALLOW_INDEXING=true`, and `APP_PASSWORD` can put a password gate in front of the whole app.
 - **Report a vulnerability.** Please read [SECURITY.md](./SECURITY.md) before disclosing security issues publicly.
 
-> Webapp is a young project. The encryption implementation has not been independently audited yet. Do not use it as the only copy of critical data.
+> Webapp is a young project. A deployment is single-tenant until per-user OAuth exists, so anyone who can reach the URL can access the configured notes unless you set `APP_PASSWORD`. The encryption implementation has not been independently audited yet. Do not use it as the only copy of critical data.
 
 ---
 

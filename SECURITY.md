@@ -36,6 +36,10 @@ Security-sensitive areas of the project include:
 ## Security model
 
 - Notes are stored in a GitHub repository controlled by the deployment owner.
+- **A deployment is single-tenant.** The server authenticates to GitHub with one token from the environment, so every visitor shares the same notes repository. There is no per-user login yet.
+- The `/api/notes` routes are unauthenticated by design in the current version: they trust that the deployment itself is private. **Anyone who can reach the URL can read, write and delete the configured notes.**
+- Set `APP_PASSWORD` to put an HTTP Basic authentication gate in front of every route as a stop-gap. Without it, a public deployment exposes the notes repository to the whole internet.
+- Search engine indexing is off by default (`ALLOW_INDEXING`). Crawlers execute JavaScript, so an indexed deployment could surface note titles and content in search results.
 - The GitHub token is read from server-side environment variables. It must never be exposed to the browser.
 - With E2EE enabled, note content is encrypted in the browser with AES-256-GCM before it is sent to the server. The server only receives ciphertext.
 - The master password is not stored on the server. If it is lost, encrypted notes cannot be recovered.
@@ -44,10 +48,11 @@ Security-sensitive areas of the project include:
 
 ## Recommendations for self-hosters
 
+- **Never deploy Webapp publicly with personal notes until per-user authentication exists**, unless you set `APP_PASSWORD` and understand its limitations (a single shared password, no sessions, no audit trail).
+- Keep `ALLOW_INDEXING` unset (the default). Only a demo instance with sample notes should enable it.
 - Use a **fine-grained GitHub token** limited to the notes repository, with only `Contents: Read and write` permission.
 - Keep `.env.local` out of version control. The repository's `.gitignore` already ignores `.env*`.
-- Deploy behind HTTPS.
-- Restrict access to the deployment if the notes repository is private.
+- Deploy behind HTTPS. HTTP Basic authentication sends the password on every request; without TLS it travels in clear text.
 - Keep dependencies up to date.
 - Do not use Webapp as the only copy of critical data. The encryption implementation has not been independently audited.
 - Rotate tokens and API keys if you suspect they were exposed.

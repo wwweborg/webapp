@@ -19,3 +19,13 @@ export const DISCUSSIONS_URL = `${GITHUB_URL}/discussions`;
 export const ISSUES_URL = `${GITHUB_URL}/issues`;
 
 export const OG_IMAGE_ALT = 'Webapp: notas Markdown privadas con sincronización en GitHub e IA';
+
+/**
+ * Search engine indexing is disabled by default.
+ *
+ * Webapp is a personal notes application: a public deployment exposes the notes
+ * of the repository configured through `GITHUB_TOKEN`, and Googlebot executes
+ * JavaScript, so an indexed deployment could surface note content. Only a demo
+ * instance with sample notes should ever set this to `true`.
+ */
+export const ALLOW_INDEXING = process.env.ALLOW_INDEXING === 'true';

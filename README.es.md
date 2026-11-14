@@ -193,10 +193,16 @@ Copia `.env.example` a `.env.local` y rellena los valores que necesites.
 | `GITHUB_TOKEN` | Sí | Personal Access Token con acceso de lectura/escritura al repositorio de **notas**. Se recomienda un token fine-grained con `Contents: Read and write`. |
 | `GITHUB_USER` | Sí | Propietario del repositorio de notas (usuario u organización). |
 | `GITHUB_REPO` | Sí | Nombre del repositorio de notas. |
-| `APP_URL` | No | URL pública del despliegue. Se usa para enlaces autorreferenciales y metadatos. |
+| `APP_URL` | No | URL pública del despliegue. Se usa para enlaces canónicos y metadatos Open Graph. |
+| `APP_PASSWORD` | No | Activa una barrera de autenticación HTTP Basic en todas las rutas. **Muy recomendable** en cualquier despliegue con notas reales. Requiere HTTPS. |
+| `APP_USERNAME` | No | Usuario de esa barrera. Por defecto, `webapp`. |
+| `ALLOW_INDEXING` | No | Ponlo en `true` solo para una demo pública con notas de ejemplo. Un despliegue normal queda fuera de los buscadores. |
 
 > [!IMPORTANT]
 > El token lo usa el servidor, no el navegador. Nunca lo expongas con el prefijo `NEXT_PUBLIC_` ni subas `.env.local` al repositorio.
+
+> [!WARNING]
+> Un despliegue es de **un solo inquilino**: todos los visitantes comparten el repositorio de notas configurado con `GITHUB_TOKEN`, y las rutas `/api/notes` aún no tienen login por usuario. No publiques un despliegue con notas personales salvo que definas `APP_PASSWORD`, y deja `ALLOW_INDEXING` sin definir para que los buscadores nunca indexen una página que muestra tus notas. Consulta [SECURITY.md](./SECURITY.md).
 
 ### Proveedores de IA (todos opcionales)
 
@@ -273,9 +279,10 @@ Puedes cambiar el modelo y la URL base desde **Ajustes → IA**.
 - **Contraseña maestra.** La clave de cifrado se deriva de tu contraseña maestra y no se guarda en el servidor. Si pierdes la contraseña, pierdes el acceso a las notas cifradas.
 - **Alcance del token.** Usa un token fine-grained de GitHub limitado al repositorio de notas, no un token clásico con acceso total a la cuenta.
 - **Autoalojamiento.** Tú controlas el despliegue y las variables de entorno.
+- **Privado por defecto.** La indexación en buscadores está desactivada salvo que pongas `ALLOW_INDEXING=true`, y `APP_PASSWORD` puede poner una contraseña delante de toda la app.
 - **Reporta una vulnerabilidad.** Lee [SECURITY.md](./SECURITY.md) antes de divulgar un problema de seguridad públicamente.
 
-> Webapp es un proyecto joven. La implementación de cifrado aún no ha sido auditada de forma independiente. No la uses como única copia de datos críticos.
+> Webapp es un proyecto joven. Un despliegue es de un solo inquilino hasta que exista OAuth por usuario, así que cualquiera que llegue a la URL puede acceder a las notas configuradas salvo que definas `APP_PASSWORD`. La implementación de cifrado aún no ha sido auditada de forma independiente. No la uses como única copia de datos críticos.
 
 ---
 

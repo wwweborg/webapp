@@ -2,6 +2,7 @@
 import type {Metadata, Viewport} from 'next';
 import './globals.css'; // Global styles
 import {
+  ALLOW_INDEXING,
   GITHUB_ORG_URL,
   GITHUB_URL,
   SITE_DESCRIPTION,
@@ -71,11 +72,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: '/',
-    languages: {
-      es: '/',
-      en: '/',
-      'x-default': '/',
-    },
   },
   icons: {
     icon: [
@@ -110,14 +106,14 @@ export const metadata: Metadata = {
     address: false,
   },
   robots: {
-    index: true,
-    follow: true,
+    index: ALLOW_INDEXING,
+    follow: ALLOW_INDEXING,
     googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
+      index: ALLOW_INDEXING,
+      follow: ALLOW_INDEXING,
+      'max-image-preview': ALLOW_INDEXING ? 'large' : 'none',
+      'max-snippet': ALLOW_INDEXING ? -1 : 0,
+      'max-video-preview': ALLOW_INDEXING ? -1 : 0,
     },
   },
 };

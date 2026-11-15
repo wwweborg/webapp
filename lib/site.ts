@@ -4,7 +4,12 @@
  * `APP_URL` is read at build time so a self-hosted deployment can set its own
  * canonical URL. It falls back to the official deployment.
  */
-export const SITE_URL = (process.env.APP_URL ?? 'https://webapp.microtecn.xyz').replace(/\/+$/, '');
+const rawSiteUrl = process.env.APP_URL?.trim();
+
+export const SITE_URL = (rawSiteUrl && rawSiteUrl.length > 0 ? rawSiteUrl : 'https://webapp.microtecn.xyz').replace(
+  /\/+$/,
+  '',
+);
 
 export const SITE_NAME = 'Webapp';
 

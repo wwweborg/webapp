@@ -39,6 +39,7 @@ First public release of Webapp, the notes application of the **wwwOS** ecosystem
 - Fixed React hooks lint errors around encryption and export callbacks.
 - Removed a non-existent jsDelivr fallback URL from the Toss Face `@font-face` declarations.
 - Replaced the invalid `next clean` npm script with a cross-platform Node command.
+- Empty `APP_URL` values no longer crash the server with `Invalid URL`; the code now falls back to the default site URL.
 
 ### Known limitations
 
